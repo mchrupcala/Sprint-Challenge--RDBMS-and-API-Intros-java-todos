@@ -1,18 +1,22 @@
 package main.java.com.lambdaschool.todos.controllers;
 
+import main.java.com.lambdaschool.todos.services.TodoService;
+
+@RestController
+@RequestMapping(value = "/todos")
 public class TodoController {
-    //GET
-    //  http://localhost:2019/users/mine
 
-    //POST
-    //  http://localhost:2019/users/user
+    @Autowired
+    private TodoService todoService;
 
-    //POST
-    //  http://localhost:2019/users/todo/{userid}
+
+
 
     //PUT
     //  http://localhost:2019/todos/todoid/{todoid}
+//    @GetMapping(value = "/todoid/{todoid}",
+//                produces = {"application/json"})
+//    public ResponseEntity<?>
 
-    //DELETE
-    //  http://localhost:2019/users/userid/{userid}
+
 }

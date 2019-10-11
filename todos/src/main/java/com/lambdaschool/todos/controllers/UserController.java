@@ -24,6 +24,56 @@ public class UserController
     @Autowired
     private UserService userService;
 
+    //GET
+    //  http://localhost:2019/users/mine
+
+
+    //POST
+    //  http://localhost:2019/users/user
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping(value = "/user",
+            consumes = {"application/json"},
+            produces = {"application/json"})
+    public ResponseEntity<?> addNewUser(@Valid
+                                        @RequestBody
+                                                User newuser) throws URISyntaxException
+    {
+        newuser = userService.save(newuser);
+
+        // set the location header for the newly created resource
+        HttpHeaders responseHeaders = new HttpHeaders();
+        URI newUserURI = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{userid}")
+                .buildAndExpand(newuser.getUserid())
+                .toUri();
+        responseHeaders.setLocation(newUserURI);
+
+        return new ResponseEntity<>(null,
+                responseHeaders,
+                HttpStatus.CREATED);
+    }
+
+
+    //POST
+    //  http://localhost:2019/users/todo/{userid}
+
+
+    //DELETE
+    //  http://localhost:2019/users/userid/{id}
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @DeleteMapping("/userid/{id}")
+    public ResponseEntity<?> deleteUserById(
+            @PathVariable
+                    long id)
+    {
+        userService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
+
     // http://localhost:2019/users/users/
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(value = "/users",
@@ -111,28 +161,7 @@ public class UserController
     //            }
     //        ]
     //        }
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @PostMapping(value = "/user",
-            consumes = {"application/json"},
-            produces = {"application/json"})
-    public ResponseEntity<?> addNewUser(@Valid
-                                        @RequestBody
-                                                User newuser) throws URISyntaxException
-    {
-        newuser = userService.save(newuser);
 
-        // set the location header for the newly created resource
-        HttpHeaders responseHeaders = new HttpHeaders();
-        URI newUserURI = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{userid}")
-                .buildAndExpand(newuser.getUserid())
-                .toUri();
-        responseHeaders.setLocation(newUserURI);
-
-        return new ResponseEntity<>(null,
-                responseHeaders,
-                HttpStatus.CREATED);
-    }
 
 
     // http://localhost:2019/users/user/7
@@ -166,16 +195,7 @@ public class UserController
     }
 
 
-    // http://localhost:2019/users/user/14
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    @DeleteMapping("/user/{id}")
-    public ResponseEntity<?> deleteUserById(
-            @PathVariable
-                    long id)
-    {
-        userService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+
 
     // http://localhost:2019/users/user/15/role/2
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
