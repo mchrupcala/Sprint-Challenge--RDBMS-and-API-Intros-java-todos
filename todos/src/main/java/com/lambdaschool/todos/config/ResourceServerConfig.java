@@ -1,4 +1,4 @@
-package main.java.com.lambdaschool.todos.config;
+package com.lambdaschool.todos.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

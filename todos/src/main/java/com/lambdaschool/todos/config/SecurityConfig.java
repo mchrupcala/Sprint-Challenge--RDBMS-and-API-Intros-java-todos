@@ -1,4 +1,4 @@
-package main.java.com.lambdaschool.todos.config;
+package com.lambdaschool.todos.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
