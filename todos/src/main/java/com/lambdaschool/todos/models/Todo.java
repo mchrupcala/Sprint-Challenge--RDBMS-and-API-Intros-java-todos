@@ -3,6 +3,7 @@ package com.lambdaschool.todos.models;
 import com.lambdaschool.todos.models.Auditable;
 import com.lambdaschool.todos.models.User;
 import javax.persistence.*;
+import java.text.DateFormat;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,6 @@ public class Todo extends Auditable {
     private String description;
 
     private Date datestarted;
-
     private boolean completed;
 
     @ManyToOne
@@ -25,8 +25,23 @@ public class Todo extends Auditable {
                nullable = false)
     private User user;
 
+    public Todo(User user) {
 
-//GETTERS AND SETTERS
+    }
+
+    public Todo(String description, Date datestarted, User user) {
+        this.description = description;
+        this.datestarted = datestarted;
+//        this.completed = completed;
+        this.user = user;
+    }
+
+    public Todo() {
+        
+    }
+
+
+    //GETTERS AND SETTERS
     public long getTodoid() {
         return todoid;
     }

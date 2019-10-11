@@ -49,7 +49,8 @@ public class User extends Auditable
     private List<Useremail> useremails = new ArrayList<>();
 
     @OneToMany(mappedBy = "user",
-               cascade = CascadeType.ALL)
+               cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Todo> todos = new ArrayList<>();
 
     public User()
@@ -70,6 +71,10 @@ public class User extends Auditable
         }
         this.userroles = userRoles;
     }
+
+    public List<Todo> getTodos() { return todos;}
+
+    public void setTodos(List<Todo> todos) {this.todos = todos;}
 
     public long getUserid()
     {
