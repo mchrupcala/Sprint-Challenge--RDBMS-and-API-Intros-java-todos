@@ -1,4 +1,4 @@
-package main.java.com.lambdaschool.todos.models;
+package com.lambdaschool.todos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,8 +1,8 @@
-package main.java.com.lambdaschool.todos.services;
+package com.lambdaschool.todos.services;
 
-import com.lambdaschool.oauth2.models.Role;
-import com.lambdaschool.oauth2.repository.RoleRepository;
-import com.lambdaschool.oauth2.repository.UserRepository;
+import com.lambdaschool.todos.models.Role;
+import com.lambdaschool.todos.repository.RoleRepository;
+import com.lambdaschool.todos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

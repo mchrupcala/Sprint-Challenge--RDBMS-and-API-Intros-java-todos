@@ -1,7 +1,7 @@
-package main.java.com.lambdaschool.todos.services;
+package com.lambdaschool.todos.services;
 
-import com.lambdaschool.oauth2.models.Useremail;
-import com.lambdaschool.oauth2.repository.UseremailRepository;
+import com.lambdaschool.todos.models.Useremail;
+import com.lambdaschool.todos.repository.UseremailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

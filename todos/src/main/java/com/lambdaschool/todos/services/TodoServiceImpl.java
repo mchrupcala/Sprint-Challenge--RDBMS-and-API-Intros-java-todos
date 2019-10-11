@@ -1,7 +1,8 @@
-package main.java.com.lambdaschool.todos.services;
+package com.lambdaschool.todos.services;
 
-import main.java.com.lambdaschool.todos.models.Todo;
-import main.java.com.lambdaschool.todos.repository.TodoRepository;
+import com.lambdaschool.todos.models.Todo;
+import com.lambdaschool.todos.repository.TodoRepository;
+import com.lambdaschool.todos.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

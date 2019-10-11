@@ -1,6 +1,6 @@
-package main.java.com.lambdaschool.todos.services;
+package com.lambdaschool.todos.services;
 
-import com.lambdaschool.oauth2.models.User;
+import com.lambdaschool.todos.models.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;

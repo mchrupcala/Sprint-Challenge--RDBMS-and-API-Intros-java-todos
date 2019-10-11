@@ -1,7 +1,7 @@
-package main.java.com.lambdaschool.todos.repository;
+package com.lambdaschool.todos.repository;
 
-import com.lambdaschool.oauth2.models.Role;
-import com.lambdaschool.oauth2.view.JustTheCount;
+import com.lambdaschool.todos.models.Role;
+import com.lambdaschool.todos.view.JustTheCount;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

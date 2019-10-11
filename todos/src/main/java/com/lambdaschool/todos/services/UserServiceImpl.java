@@ -1,11 +1,11 @@
-package main.java.com.lambdaschool.todos.services;
+package com.lambdaschool.todos.services;
 
-import com.lambdaschool.oauth2.models.Role;
-import com.lambdaschool.oauth2.models.User;
-import com.lambdaschool.oauth2.models.UserRoles;
-import com.lambdaschool.oauth2.models.Useremail;
-import com.lambdaschool.oauth2.repository.RoleRepository;
-import com.lambdaschool.oauth2.repository.UserRepository;
+import com.lambdaschool.todos.models.Role;
+import com.lambdaschool.todos.models.User;
+import com.lambdaschool.todos.models.UserRoles;
+import com.lambdaschool.todos.models.Useremail;
+import com.lambdaschool.todos.repository.RoleRepository;
+import com.lambdaschool.todos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;

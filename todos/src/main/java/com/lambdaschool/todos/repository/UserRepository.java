@@ -1,6 +1,6 @@
-package main.java.com.lambdaschool.todos.repository;
+package com.lambdaschool.todos.repository;
 
-import com.lambdaschool.oauth2.models.User;
+import com.lambdaschool.todos.models.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package main.java.com.lambdaschool.todos.services;
+package com.lambdaschool.todos.services;
 
-import com.lambdaschool.oauth2.models.Useremail;
+import com.lambdaschool.todos.models.Useremail;
 
 import java.util.List;
 

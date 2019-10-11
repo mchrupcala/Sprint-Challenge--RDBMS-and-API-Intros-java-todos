@@ -1,7 +1,7 @@
-package main.java.com.lambdaschool.todos.controllers;
+package com.lambdaschool.todos.controllers;
 
-import com.lambdaschool.oauth2.models.Useremail;
-import com.lambdaschool.oauth2.services.UseremailService;
+import com.lambdaschool.todos.models.Useremail;
+import com.lambdaschool.todos.services.UseremailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

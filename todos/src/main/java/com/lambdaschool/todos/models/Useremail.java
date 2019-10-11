@@ -1,6 +1,8 @@
-package main.java.com.lambdaschool.todos.models;
+package com.lambdaschool.todos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.lambdaschool.todos.models.User;
+import com.lambdaschool.todos.models.Auditable;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

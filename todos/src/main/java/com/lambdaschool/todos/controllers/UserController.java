@@ -1,7 +1,7 @@
-package main.java.com.lambdaschool.todos.controllers;
+package com.lambdaschool.todos.controllers;
 
-import com.lambdaschool.oauth2.models.User;
-import com.lambdaschool.oauth2.services.UserService;
+import com.lambdaschool.todos.models.User;
+import com.lambdaschool.todos.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

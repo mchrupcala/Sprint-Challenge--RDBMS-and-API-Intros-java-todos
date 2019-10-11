@@ -1,5 +1,8 @@
-package main.java.com.lambdaschool.todos.models;
+package com.lambdaschool.todos.models;
 
+import com.lambdaschool.todos.models.Auditable;
+import com.lambdaschool.todos.models.User;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -19,7 +22,7 @@ public class Todo extends Auditable {
 
     @ManyToOne
     @JoinColumn(name = "userid",
-    )           nullable = false)
+               nullable = false)
     private User user;
 
 

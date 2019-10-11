@@ -1,6 +1,7 @@
-package main.java.com.lambdaschool.todos.models;
+package com.lambdaschool.todos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.lambdaschool.todos.models.UserRoles;
 
 import javax.persistence.*;
 import java.util.ArrayList;

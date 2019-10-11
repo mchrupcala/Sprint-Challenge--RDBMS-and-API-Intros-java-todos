@@ -1,10 +1,13 @@
-package main.java.com.lambdaschool.todos.models;
+package com.lambdaschool.todos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.lambdaschool.todos.models.Useremail;
+import com.lambdaschool.todos.models.UserRoles;
+import com.lambdaschool.todos.models.Todo;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
