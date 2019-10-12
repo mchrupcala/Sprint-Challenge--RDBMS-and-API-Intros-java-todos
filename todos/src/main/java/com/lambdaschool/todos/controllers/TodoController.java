@@ -1,12 +1,14 @@
 package com.lambdaschool.todos.controllers;
 
+import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/todos")
+@RequestMapping("/todos")
 public class TodoController {
 
     @Autowired
@@ -17,9 +19,14 @@ public class TodoController {
 
     //PUT
     //  http://localhost:2019/todos/todoid/{todoid}
-//    @GetMapping(value = "/todoid/{todoid}",
-//                produces = {"application/json"})
-//    public ResponseEntity<?>
+    @PutMapping(value = "/todoid/{todoid}",
+            consumes = {"application/json"})
+    public ResponseEntity<?> updateTodo(@RequestBody Todo todo,
+                                        @PathVariable long todoid)
+    {
+        todoService.update(todoid, todo);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 }

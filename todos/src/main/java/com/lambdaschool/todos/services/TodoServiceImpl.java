@@ -38,4 +38,32 @@ public class TodoServiceImpl implements TodoService {
         return todorepos.save(newTodo);
 //        return null;
     }
+
+    @Override
+    public Todo update(long id, Todo todo) {
+
+        //model this off of UserServiceImpl...fix the null in Description
+
+//        if (todo.getDescription() != null) {
+            todo.setDescription(todo.getDescription());
+//        }
+
+//        if (todo.getDatestarted() != null) {
+//
+//        }
+
+        //boolean?
+        if (todo.isCompleted() || !todo.isCompleted()) {
+            todo.setCompleted(todo.isCompleted());
+        }
+
+        if (todo.getUser() != null) {
+            todo.setUser(todo.getUser());
+        }
+
+        return todorepos.save(todo);
+    }
+//    @Transactional
+//    @Override
+//    public Todo update
 }
