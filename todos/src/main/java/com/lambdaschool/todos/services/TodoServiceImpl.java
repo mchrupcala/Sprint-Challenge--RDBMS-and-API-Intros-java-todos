@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 
 @Service(value = "todoService")
@@ -40,29 +41,41 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public Todo update(long id, Todo todo) {
+    public Todo findTodoById(long todoid) {
+        return null;
+    }
+
+    @Override
+    public Todo update(Todo newTodo, long todoid) {
+
+        Todo currentTodo = todorepos.findById(todoid);
+        if (currentTodo != null) {
 
         //model this off of UserServiceImpl...fix the null in Description
 
-//        if (todo.getDescription() != null) {
-            todo.setDescription(todo.getDescription());
-//        }
+        if (newTodo.getDescription() != null) {
+            currentTodo.setDescription(newTodo.getDescription());
+        }
 
 //        if (todo.getDatestarted() != null) {
 //
 //        }
 
         //boolean?
-        if (todo.isCompleted() || !todo.isCompleted()) {
-            todo.setCompleted(todo.isCompleted());
+        if (newTodo.isCompleted() || !newTodo.isCompleted()) {
+            currentTodo.setCompleted(newTodo.isCompleted());
         }
 
-        if (todo.getUser() != null) {
-            todo.setUser(todo.getUser());
+        if (newTodo.getUser() != null) {
+            currentTodo.setUser(newTodo.getUser());
         }
 
-        return todorepos.save(todo);
-    }
+        return todorepos.save(currentTodo);
+    }  else {
+        {
+            throw new EntityNotFoundException("Todo was not found.");
+        }
+    } }
 //    @Transactional
 //    @Override
 //    public Todo update

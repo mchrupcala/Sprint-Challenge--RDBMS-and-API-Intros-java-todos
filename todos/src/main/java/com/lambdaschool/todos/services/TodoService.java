@@ -8,5 +8,8 @@ public interface TodoService {
 
     Todo saveTodo(Todo todo, User user);
 
-    Todo update(long id, Todo todo);
+    Todo findTodoById(long todoid);
+
+    Todo update(Todo newTodo, long todoid);
+
 }

@@ -21,10 +21,10 @@ public class TodoController {
     //  http://localhost:2019/todos/todoid/{todoid}
     @PutMapping(value = "/todoid/{todoid}",
             consumes = {"application/json"})
-    public ResponseEntity<?> updateTodo(@RequestBody Todo todo,
+    public ResponseEntity<?> updateTodo(@RequestBody Todo newTodo,
                                         @PathVariable long todoid)
     {
-        todoService.update(todoid, todo);
+        newTodo = todoService.update(newTodo, todoid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
