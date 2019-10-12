@@ -43,6 +43,7 @@ public class RolesController
                 HttpStatus.OK);
     }
 
+
     // http://localhost:2019/roles/role/name/data
     @GetMapping(value = "/role/name/{roleName}",
             produces = {"application/json"})

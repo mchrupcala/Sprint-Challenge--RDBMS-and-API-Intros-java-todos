@@ -21,6 +21,9 @@ public interface UserService
 
     User save(User user);
 
+//    User updateTodo(User user,
+//                long id);
+
     User update(User user,
                 long id,
                 boolean isAdmin);

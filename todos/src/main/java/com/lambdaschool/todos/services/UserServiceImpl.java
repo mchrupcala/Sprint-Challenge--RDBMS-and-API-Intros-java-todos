@@ -121,11 +121,68 @@ public class UserServiceImpl implements UserDetailsService,
 
         for (Todo t : user.getTodos()) {
             newUser.getTodos()
-                    .add(new Todo(t.getDescription(), t.getDatestarted(), newUser));
+                    .add(new Todo(t.getDescription(), t.getDatestarted(), t.isCompleted(), newUser));
         }
 
         return userrepos.save(newUser);
     }
+
+//    @Transactional
+//    @Override
+//    public User updateTodo(User user,
+//                       long id)
+//    {
+////        Authentication authentication = SecurityContextHolder.getContext()
+////                .getAuthentication();
+////
+////        User authenticatedUser = userrepos.findByUsername(authentication.getName());
+//
+//            User currentUser = findUserById(id);
+//
+//            if (user.getUsername() != null)
+//            {
+//                currentUser.setUsername(user.getUsername().toLowerCase());
+//            }
+//
+//            if (user.getPassword() != null)
+//            {
+//                currentUser.setPasswordNoEncrypt(user.getPassword());
+//            }
+//
+//            if (user.getPrimaryemail() != null)
+//            {
+//                currentUser.setPrimaryemail(user.getPrimaryemail().toLowerCase());
+//            }
+//
+//            if (user.getUserroles()
+//                    .size() > 0)
+//            {
+//                throw new EntityNotFoundException("User Roles are not updated through User. See endpoint POST: users/user/{userid}/role/{roleid}");
+//            }
+//
+//            if (user.getUseremails()
+//                    .size() > 0)
+//            {
+//                for (Useremail ue : user.getUseremails())
+//                {
+//                    currentUser.getUseremails()
+//                            .add(new Useremail(currentUser,
+//                                    ue.getUseremail()));
+//                }
+//            }
+//
+//            if (user.getTodos().size() > 0) {
+//
+//                for (Todo t : user.getTodos()) {
+//                    currentUser.getTodos()
+//                            .add(new Todo(t.getDescription(), t.getDatestarted(), currentUser));
+//                }
+//            }
+//
+//            return userrepos.save(currentUser);
+//
+//    }
+
 
     @Transactional
     @Override
@@ -171,6 +228,14 @@ public class UserServiceImpl implements UserDetailsService,
                     currentUser.getUseremails()
                             .add(new Useremail(currentUser,
                                     ue.getUseremail()));
+                }
+            }
+
+            if (user.getTodos().size() > 0) {
+
+                for (Todo t : user.getTodos()) {
+                    currentUser.getTodos()
+                            .add(new Todo(t.getDescription(), t.getDatestarted(), t.isCompleted(), currentUser));
                 }
             }
 

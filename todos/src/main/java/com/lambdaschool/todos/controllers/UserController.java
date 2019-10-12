@@ -1,6 +1,8 @@
 package com.lambdaschool.todos.controllers;
 
+import com.lambdaschool.todos.models.Todo;
 import com.lambdaschool.todos.models.User;
+import com.lambdaschool.todos.services.TodoService;
 import com.lambdaschool.todos.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -8,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -24,11 +27,25 @@ public class UserController
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private TodoService todoService;
+
     //GET
     //  http://localhost:2019/users/mine
+    @GetMapping(value = "/mine",
+            produces = {"application/json"})
+    @ResponseBody
+    public ResponseEntity<?> getMyUser(Authentication authentication)
+    {
+        User u = userService.findByName(authentication.getName());
+        return new ResponseEntity<>(u,
+                HttpStatus.OK);
+    }
 
 
-    //POST
+
+
+    //POST    IT WORKS! (I THINK?)
     //  http://localhost:2019/users/user
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -57,6 +74,29 @@ public class UserController
 
     //POST
     //  http://localhost:2019/users/todo/{userid}
+
+    @PostMapping(value = "/todo/{userid}",
+            consumes = {"application/json"})
+    public ResponseEntity<?> addNewTodo(@RequestBody
+                                                Todo newtodo,
+                                        @PathVariable long userid)
+    {
+        User u = userService.findUserById(userid);
+        //why is my save method from User expecting a long?
+        todoService.saveTodo(newtodo, u);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     //DELETE
@@ -124,6 +164,7 @@ public class UserController
                 HttpStatus.OK);
     }
 
+
     // http://localhost:2019/users/getusername
     @GetMapping(value = "/getusername",
             produces = {"application/json"})
@@ -133,6 +174,8 @@ public class UserController
         return new ResponseEntity<>(authentication.getPrincipal(),
                 HttpStatus.OK);
     }
+
+
 
     // http://localhost:2019/users/getuserinfo
     @GetMapping(value = "/getuserinfo",

@@ -17,6 +17,7 @@ public class UserRoles extends Auditable implements Serializable
     @JsonIgnoreProperties("userroles")
     private User user;
 
+    //JsonIgnoreProperties --> since I'm linking tables with foreign/primary keys...JsonIgnore will make sure i'm not pulling in all the other columns
     @Id
     @ManyToOne
     @JoinColumn(name = "roleid")
